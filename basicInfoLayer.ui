@@ -30,19 +30,28 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="top_widget" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>64</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>53</height>
+       <height>64</height>
       </size>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <property name="spacing">
        <number>0</number>
       </property>
+      <property name="topMargin">
+       <number>10</number>
+      </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>10</number>
       </property>
       <item>
        <widget class="QWidget" name="widget_logo" native="true">
@@ -199,8 +208,17 @@ font-size: 16px;</string>
     </widget>
    </item>
    <item>
-    <widget class="QWidget" name="widget_3" native="true">
+    <widget class="QWidget" name="date_time_widget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>16</number>
+      </property>
+      <property name="bottomMargin">
+       <number>16</number>
+      </property>
       <item>
        <widget class="QLabel" name="time_label">
         <property name="minimumSize">
@@ -275,7 +293,7 @@ line-height: 32px;</string>
     </spacer>
    </item>
    <item>
-    <widget class="QWidget" name="widget_2" native="true">
+    <widget class="QWidget" name="bottom_widget" native="true">
      <property name="maximumSize">
       <size>
        <width>16777215</width>

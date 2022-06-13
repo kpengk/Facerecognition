@@ -16,6 +16,7 @@ MainWidget::MainWidget(QWidget *parent)
     video_label_->setFixedSize(full_size);
     mask_label_->setFixedSize(full_size);
     base_info_layer_->setFixedSize(full_size);
+    aperture_layer_->setFixedSize(full_size);
     detection_result_layer_->setFixedSize(full_size);
 
     video_label_->setPixmap(QPixmap("D:/Project/Facerecognition/Facerecognition2.0/images/video.png"));
