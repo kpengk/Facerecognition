@@ -1382,7 +1382,7 @@ font-size: 40px;</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page_than_fail">
+     <widget class="QWidget" name="page_compare_fail">
       <layout class="QVBoxLayout" name="verticalLayout_12">
        <property name="spacing">
         <number>0</number>
@@ -1571,7 +1571,7 @@ font-size: 40px;</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page_in_request">
+     <widget class="QWidget" name="page_requesting">
       <layout class="QVBoxLayout" name="verticalLayout_9">
        <property name="spacing">
         <number>0</number>
