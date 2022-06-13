@@ -1,0 +1,45 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/1x/abnormal.png</file>
+        <file>images/1x/BigDataCard_green.png</file>
+        <file>images/1x/BigDataCard_red.png</file>
+        <file>images/1x/elementCard.png</file>
+        <file>images/1x/FixedPoint.png</file>
+        <file>images/1x/FixedPoint_1.png</file>
+        <file>images/1x/Group_431.png</file>
+        <file>images/1x/loading_icon.png</file>
+        <file>images/1x/mainInfo_black.png</file>
+        <file>images/1x/mainInfo_blue.png</file>
+        <file>images/1x/mainInfo_green.png</file>
+        <file>images/1x/mainInfo_red.png</file>
+        <file>images/1x/mask.png</file>
+        <file>images/1x/NoPersonInfo.png</file>
+        <file>images/1x/PersonInfoNoPhoto.png</file>
+        <file>images/1x/PersonInforPhoto.png</file>
+        <file>images/1x/pic_loading.png</file>
+        <file>images/1x/pic_noID.png</file>
+        <file>images/1x/pic_NoService.png</file>
+        <file>images/1x/pic_noWifi.png</file>
+        <file>images/1x/pic_QrCode.png</file>
+        <file>images/1x/pic_worryID.png</file>
+        <file>images/1x/Property_1_blue.png</file>
+        <file>images/1x/Property_1_green.png</file>
+        <file>images/1x/Property_1_red.png</file>
+        <file>images/1x/Property_1_yellow.png</file>
+        <file>images/1x/icon_ChinaTelecom.png</file>
+        <file>images/1x/temperature_gray.png</file>
+        <file>images/1x/temperature_green.png</file>
+        <file>images/1x/temperature_yellow.png</file>
+        <file>images/1x/mainInfo_yellow.png</file>
+        <file>images/1x/default_head_gray.png</file>
+        <file>images/1x/hour48.png</file>
+        <file>images/1x/icon_alert.png</file>
+        <file>images/1x/icon_done.png</file>
+        <file>images/1x/icon_hesuan.png</file>
+        <file>images/1x/icon_Yimiao.png</file>
+        <file>images/1x/pic_qrcode_green.png</file>
+        <file>images/1x/pic_qrcode_red.png</file>
+        <file>images/1x/picTongxing_green.png</file>
+        <file>images/1x/picTongxing_red.png</file>
+    </qresource>
+</RCC>
