@@ -51,7 +51,7 @@ void DetectionResultLayer::set_result_normal(bool normal)
     }
 }
 
-void DetectionResultLayer::set_nucleic_acid(NucleicAcid state, const QString &datetime)
+void DetectionResultLayer::set_nucleic_acid(NucleicAcid state, const QDateTime &datetime)
 {
     QString name;
     QString color;
@@ -91,7 +91,7 @@ void DetectionResultLayer::set_nucleic_acid(NucleicAcid state, const QString &da
     ui->label_nucleic_result->setStyleSheet(QString("color: %1; font-weight: bold; font-size: 40px;").arg(color));
     if (state == NucleicAcid::feminine || state == NucleicAcid::positive || state == NucleicAcid::suspected_positive)
     {
-        ui->label_nucleic_datetime->setText(datetime);
+        ui->label_nucleic_datetime->setText(datetime.toString("yyyy-MM-dd  HH:mm"));
     }
     else
     {

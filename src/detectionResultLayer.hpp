@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QWidget>
+#include <QDateTime>
 
 namespace Ui {
 class DetectionResultLayer;
@@ -38,7 +39,7 @@ public:
     void set_detect_state(DetectState state);
 
     void set_result_normal(bool normal);
-    void set_nucleic_acid(NucleicAcid state, const QString& datetime={});
+    void set_nucleic_acid(NucleicAcid state, const QDateTime& datetime={});
     // -1:**  0:未接种  1/2/3:针数
     void set_vaccination(int num);
 

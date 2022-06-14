@@ -22,6 +22,16 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
+target_include_directories(${target_name} PRIVATE ../include)
+
+if (WIN32)
+    target_link_directories(${target_name} PRIVATE ../lib/win32)
+    target_link_libraries(${target_name} PRIVATE readerlib WltRS)
+else()
+    target_link_directories(${target_name} PRIVATE ../lib/armv7)
+    target_link_libraries(${target_name} PRIVATE libReader libWltRS)
+endif()
+
 target_link_libraries(${target_name} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 set_target_properties(${target_name} PROPERTIES
