@@ -21,7 +21,6 @@ public:
 private:
     Ui::MainWidget *ui;
     QLabel* video_label_;
-    QLabel* mask_label_;
     BasicInfoLayer* base_info_layer_;
     ApertureLayer* aperture_layer_;
     DetectionResultLayer* detection_result_layer_;

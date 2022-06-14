@@ -9,18 +9,8 @@ ApertureLayer::ApertureLayer(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    set_mask_color(MaskColor::blue);
+    set_mask_color(MaskColor::green);
     set_tip_visble(false);
-
-    QTimer* timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, [this](){
-        static int n = 0;
-        set_mask_color(static_cast<MaskColor>(n));
-        ++n;
-        if (n > 3)
-            n = 0;
-    });
-    timer->start(2000);
 }
 
 ApertureLayer::~ApertureLayer()
