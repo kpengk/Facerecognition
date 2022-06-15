@@ -211,12 +211,8 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
 
 #include <fstream>
 
-std::string read_card()
+bool read_id_card()
 {
-    unsigned char WZbuffer[256] = { 0 };
-    unsigned char ZPbuffer[1024] = { 0 };
-    unsigned char FPbuffer[1024] = { 0 };
-
 #if defined(_WIN32) || defined(__WIN32__) || defined(__CYGWIN__)
     std::string port = R"(\\.\COM3)";
 #else
@@ -224,13 +220,17 @@ std::string read_card()
 #endif
 
     if (!OpenReader(port.c_str(), 115200))
-        return {};
+        return false;
     if (!FindCard(port.c_str()))
-        return {};
+        return false;
     if (!SelectCard(port.c_str()))
-        return {};
+        return false;
+
+    unsigned char WZbuffer[256]{};
+    unsigned char ZPbuffer[1024]{};
+    unsigned char FPbuffer[1024]{};
     if (!ReadBaseFPMsg(port.c_str(), WZbuffer, 256, ZPbuffer, 1024, FPbuffer, 1024))
-        return {};
+        return false;
     CloseReader(port.c_str());
 
     //decode WZbuffer
@@ -240,10 +240,7 @@ std::string read_card()
     std::ofstream zp_ofs("ZP.wlt", std::ios::binary);
     zp_ofs.write(reinterpret_cast<const char*>(ZPbuffer), 1024);
     zp_ofs.close();
-    int result = WltRS("ZP.wlt", "ZP.bmp");
+    const int result = WltRS("ZP.wlt", "ZP.bmp");
     printf("Bitmap:%d\n", result);
-    //print pdf
-    if (result!=1)
-        return {};
-    return {};
+    return result == 1;
 }
