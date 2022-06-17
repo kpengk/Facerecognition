@@ -15,8 +15,7 @@ public:
     ~BasicInfoLayer();
     void set_serial_number(const QString& sn);
     void set_location(const QString& name);
-    // [state] 1:succeed 2:fail
-    void set_link_state(int state);
+    void set_link_state(bool connected);
 
 private slots:
     void on_timeout();

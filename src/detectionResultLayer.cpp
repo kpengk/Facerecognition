@@ -27,10 +27,10 @@ void DetectionResultLayer::set_detect_state(DetectState state)
     }
 }
 
-void DetectionResultLayer::set_result_normal(bool normal)
+void DetectionResultLayer::set_health_code(HealthCode state)
 {
-    if (normal)
-    {
+    switch (state) {
+    case HealthCode::green:
         ui->big_data_card_widget->setStyleSheet(
                     "QWidget#big_data_card_widget { border-radius: 14px; background-image: url(:/images/1x/BigDataCard_green.png); }"
                     "QLabel { font-family: Noto Sans SC; }");
@@ -38,9 +38,8 @@ void DetectionResultLayer::set_result_normal(bool normal)
         ui->label_result_icon->setPixmap(QPixmap(":/images/1x/icon_done.png"));
         ui->label_result_text->setText("正常");
         ui->label_travel_card_icon->setPixmap(QPixmap(":/images/1x/picTongxing_green.png"));
-    }
-    else
-    {
+        break;
+    case HealthCode::red:
         ui->big_data_card_widget->setStyleSheet(
                     "QWidget#big_data_card_widget { border-radius: 14px; background-image: url(:/images/1x/BigDataCard_red.png); }"
                     "QLabel { font-family: Noto Sans SC; }");
@@ -48,6 +47,8 @@ void DetectionResultLayer::set_result_normal(bool normal)
         ui->label_result_icon->setPixmap(QPixmap(":/images/1x/icon_alert.png"));
         ui->label_result_text->setText("异常");
         ui->label_travel_card_icon->setPixmap(QPixmap(":/images/1x/picTongxing_red.png"));
+    default:
+        break;
     }
 }
 

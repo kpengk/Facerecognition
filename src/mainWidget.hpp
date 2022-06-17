@@ -32,6 +32,11 @@ protected:
     void keyPressEvent(QKeyEvent *event) override;
 
 private:
+    bool read_id_card(std::string& name, std::string& id);
+
+private slots:
+
+private:
     Ui::MainWidget *ui;
     QLabel* video_label_;
     BasicInfoLayer* base_info_layer_;

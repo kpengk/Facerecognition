@@ -31,19 +31,17 @@ void BasicInfoLayer::set_location(const QString &name)
     ui->location_name_label->setText(name);
 }
 
-void BasicInfoLayer::set_link_state(int state)
+void BasicInfoLayer::set_link_state(bool connected)
 {
-    switch (state) {
-    case 1:
+    if (connected)
+    {
         ui->link_icon_label->setPixmap(QPixmap(":/images/1x/FixedPoint_1.png"));
         ui->link_text_label->setText("连接成功");
-        break;
-    case 2:
+    }
+    else
+    {
         ui->link_icon_label->setPixmap(QPixmap(":/images/1x/FixedPoint.png"));
         ui->link_text_label->setText("连接失败");
-        break;
-    default:
-        break;
     }
 }
 

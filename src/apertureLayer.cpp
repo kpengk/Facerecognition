@@ -6,11 +6,8 @@ ApertureLayer::ApertureLayer(QWidget *parent) :
     ui(new Ui::ApertureLayer)
 {
     ui->setupUi(this);
-
-    set_mask_color(MaskColor::green);
-    set_tip_visble(false);
-    set_name("李*六");
-    set_temperature(36.5);
+    ui->info_widget->setParent(this);// The default parent in UI files is ring_widget.
+    ui->info_widget->move(115, 978);
 }
 
 ApertureLayer::~ApertureLayer()
@@ -18,69 +15,48 @@ ApertureLayer::~ApertureLayer()
     delete ui;
 }
 
-void ApertureLayer::set_aperture_visible(bool visible)
+void ApertureLayer::set_controls_visible(ApertureLayer::Controls flag)
 {
-    ui->aperture_widget->setStyleSheet({});
-    set_ring_visible(visible);
-    ui->label_head_photo->setVisible(false);
-    ui->info_widget->setStyleSheet({});
-    ui->temperature_widget->setVisible(false);
-    ui->label_name->setText({});
+    const bool visible_pic{ flag.testFlag(ApertureLayer::info_pic) };
+    const bool visible_name{ flag.testFlag(ApertureLayer::info_name) };
+    const bool visible_temp{ flag.testFlag(ApertureLayer::info_temp) };
+
+    ui->label_head_photo->setVisible(visible_pic);
+    ui->label_name->setVisible(visible_name);
+    ui->temperature_widget->setVisible(visible_temp);
+    ui->info_widget->setVisible(visible_pic || visible_name || visible_temp);
+
+    ui->ring_widget->setVisible(flag.testFlag(ApertureLayer::ring));
+    ui->label_tip->setVisible(flag.testFlag(ApertureLayer::tip));
 }
 
-void ApertureLayer::set_ring_visible(bool visible)
+void ApertureLayer::set_mask_color(ApertureColor color)
 {
-    if (visible)
-        set_mask_color(color_mode_);
-    else
-        ui->aperture_widget->setStyleSheet({});
-}
-
-void ApertureLayer::set_tip_visble(bool visible)
-{
-    ui->label_tip->setVisible(visible);
-}
-
-void ApertureLayer::set_mask_color(MaskColor color)
-{
-    color_mode_ = color;
-
-    ui->aperture_widget->setVisible(true);
-    ui->label_tip->setVisible(false);
+    color_ = color;
 
     switch (color)
     {
-    case MaskColor::blue:
-        ui->aperture_widget->setStyleSheet("background-image: url(:/images/1x/Property_1_blue.png);");
+    case ApertureColor::blue:
+        ui->ring_widget->setStyleSheet("background-image: url(:/images/1x/Property_1_blue.png);");
         ui->info_widget->setStyleSheet("QWidget#info_widget{background-image: url(:/images/1x/mainInfo_blue.png);}");
-        ui->label_head_photo->setVisible(false);
-        ui->temperature_widget->setVisible(false);
         break;
-    case MaskColor::green:
-        ui->aperture_widget->setStyleSheet("background-image: url(:/images/1x/Property_1_green.png);");
+    case ApertureColor::green:
+        ui->ring_widget->setStyleSheet("background-image: url(:/images/1x/Property_1_green.png);");
         ui->info_widget->setStyleSheet("QWidget#info_widget{background-image: url(:/images/1x/mainInfo_green.png);}");
-        ui->label_head_photo->setVisible(true);
-        ui->temperature_widget->setVisible(true);
         ui->label_temperature_icon->setPixmap(QPixmap(":/images/1x/temperature_green.png"));
         ui->label_temperature_val->setStyleSheet(R"(color: rgba(39, 149, 15, 1);
                                                  font-family: Noto Sans SC; font-weight: bold; font-size: 32px;)");
         break;
-    case MaskColor::yellow:
-        ui->aperture_widget->setStyleSheet("background-image: url(:/images/1x/Property_1_yellow.png);");
+    case ApertureColor::yellow:
+        ui->ring_widget->setStyleSheet("background-image: url(:/images/1x/Property_1_yellow.png);");
         ui->info_widget->setStyleSheet("QWidget#info_widget{background-image: url(:/images/1x/mainInfo_yellow.png);}");
-        ui->label_head_photo->setVisible(true);
-        ui->temperature_widget->setVisible(true);
         ui->label_temperature_icon->setPixmap(QPixmap(":/images/1x/temperature_yellow.png"));
         ui->label_temperature_val->setStyleSheet(R"(color: rgba(211, 137, 19, 1);
                                                  font-family: Noto Sans SC; font-weight: bold; font-size: 32px;)");
         break;
-    case MaskColor::red:
-        ui->aperture_widget->setStyleSheet("background-image: url(:/images/1x/Property_1_red.png);");
+    case ApertureColor::red:
+        ui->ring_widget->setStyleSheet("background-image: url(:/images/1x/Property_1_red.png);");
         ui->info_widget->setStyleSheet("QWidget#info_widget{background-image: url(:/images/1x/mainInfo_red.png);}");
-        ui->label_head_photo->setVisible(false);
-        ui->label_name->setText("陌生人");
-        ui->temperature_widget->setVisible(false);
-        set_tip_text("请联系管理员");
         break;
     default:
         break;
@@ -89,19 +65,20 @@ void ApertureLayer::set_mask_color(MaskColor color)
 
 void ApertureLayer::set_name(const QString &text)
 {
-    name_ = text;
     ui->label_name->setText(text);
-    ui->label_name->setVisible(!text.isEmpty());
+}
+
+void ApertureLayer::set_text(const QString &text)
+{
+    ui->label_name->setText(text);
 }
 
 void ApertureLayer::set_temperature(float value)
 {
-    temperature_ = value;
-    ui->label_temperature_val->setText(QString::number(value, 'f', 1) + "℃");
+    ui->label_temperature_val->setText(QString("%1℃").arg(value, 0, 'f', 1));
 }
 
-void ApertureLayer::set_tip_text(const QString &tip)
+void ApertureLayer::set_tip(const QString &tip)
 {
     ui->label_tip->setText(tip);
-    ui->label_tip->setVisible(true);
 }
