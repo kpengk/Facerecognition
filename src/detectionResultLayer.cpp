@@ -31,21 +31,17 @@ void DetectionResultLayer::set_health_code(HealthCode state)
 {
     switch (state) {
     case HealthCode::green:
-        ui->big_data_card_widget->setStyleSheet(
-                    "QWidget#big_data_card_widget { border-radius: 14px; background-image: url(:/images/1x/BigDataCard_green.png); }"
-                    "QLabel { font-family: Noto Sans SC; }");
-        ui->label_qrcode->setPixmap(QPixmap(":/images/1x/pic_qrcode_green.png"));
+        ui->widget_bg->setStyleSheet("QWidget#widget_bg{ background: #35C379; }");
         ui->label_result_icon->setPixmap(QPixmap(":/images/1x/icon_done.png"));
-        ui->label_result_text->setText("正常");
+        ui->label_result_text->setText("绿码");
+        ui->label_result_text->setStyleSheet("color: #34A86B; font-weight: bold; font-size: 92px;");
         ui->label_travel_card_icon->setPixmap(QPixmap(":/images/1x/picTongxing_green.png"));
         break;
     case HealthCode::red:
-        ui->big_data_card_widget->setStyleSheet(
-                    "QWidget#big_data_card_widget { border-radius: 14px; background-image: url(:/images/1x/BigDataCard_red.png); }"
-                    "QLabel { font-family: Noto Sans SC; }");
-        ui->label_qrcode->setPixmap(QPixmap(":/images/1x/pic_qrcode_red.png"));
+        ui->widget_bg->setStyleSheet("QWidget#widget_bg{ background: #FF422D; }");
         ui->label_result_icon->setPixmap(QPixmap(":/images/1x/icon_alert.png"));
         ui->label_result_text->setText("异常");
+        ui->label_result_text->setStyleSheet("color: #FF422D; font-weight: bold; font-size: 92px;");
         ui->label_travel_card_icon->setPixmap(QPixmap(":/images/1x/picTongxing_red.png"));
     default:
         break;

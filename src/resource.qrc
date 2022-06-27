@@ -3,7 +3,6 @@
         <file>images/1x/abnormal.png</file>
         <file>images/1x/BigDataCard_green.png</file>
         <file>images/1x/BigDataCard_red.png</file>
-        <file>images/1x/elementCard.png</file>
         <file>images/1x/FixedPoint.png</file>
         <file>images/1x/FixedPoint_1.png</file>
         <file>images/1x/Group_431.png</file>
@@ -33,13 +32,14 @@
         <file>images/1x/mainInfo_yellow.png</file>
         <file>images/1x/default_head_gray.png</file>
         <file>images/1x/hour48.png</file>
-        <file>images/1x/icon_alert.png</file>
-        <file>images/1x/icon_done.png</file>
         <file>images/1x/icon_hesuan.png</file>
         <file>images/1x/icon_Yimiao.png</file>
         <file>images/1x/pic_qrcode_green.png</file>
         <file>images/1x/pic_qrcode_red.png</file>
+        <file>images/1x/icon_alert.png</file>
         <file>images/1x/picTongxing_green.png</file>
         <file>images/1x/picTongxing_red.png</file>
+        <file>images/1x/elementCard.png</file>
+        <file>images/1x/icon_done.png</file>
     </qresource>
 </RCC>

@@ -9,8 +9,8 @@ class DetectionResultLayer;
 
 enum class DetectState
 {
-    none,           /* 该图层为空 */
-    finish,         /* 检测完成，显示健康码、核酸、疫苗 */
+    none = -1,      /* 该图层为空 */
+    finish = 0,     /* 检测完成，显示健康码、核酸、疫苗 */
     not_reply,      /* 服务端为响应 */
     not_link,       /* 网络未连接 */
     unregister,     /* 未注册一码通 */
